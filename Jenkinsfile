@@ -5,6 +5,7 @@ pipeline {
             steps {
                 echo 'Building...'
                 sh 'ls'
+                sh 'npm -v && pnpm -v'
             }
         }
         stage('Test') {
