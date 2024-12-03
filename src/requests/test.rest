@@ -1,0 +1,9 @@
+POST http://localhost:3000/api/createCat
+Content-Type: application/json
+
+{
+  "name": "Nina",
+  "age": 8,
+  "breed": "who kwons",
+  "other": "anything"
+}
