@@ -12,6 +12,8 @@ services:
     image: jenkins/inbound-agent:latest
     container_name: worker
     user: root
+    ports:
+      - 4000:4000
     environment:
       - JENKINS_URL=http://myjenkins:8080
       - JENKINS_AGENT_NAME=my-node

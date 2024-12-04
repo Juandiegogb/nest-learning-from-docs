@@ -1,21 +1,30 @@
 pipeline {
-    agent any
+    agent {
+        label 'node,docker,build'
+    }
     stages {
+        stage('Install Dependencies') {
+            steps {
+                echo 'Installing dependencies...'
+                sh 'pnpm install'
+            }
+        }
         stage('Build') {
             steps {
-                echo 'Building...'
-                sh 'ls'
-                sh 'npm -v && pnpm -v'
+                echo 'Building the application...'
+                sh 'pnpm run build'
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing...'
+                echo 'Running tests...'
+                sh 'pnpm test'
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying...'
+                echo 'Deploying the application...'
+                sh 'npm run start' // Ajusta este comando según tu estrategia de despliegue
             }
         }
     }
