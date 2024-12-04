@@ -15,7 +15,7 @@ services:
     ports:
       - 4000:4000
     environment:
-      - JENKINS_URL=http://myjenkins:8080
+      - JENKINS_URL=http://jenkins:8080
       - JENKINS_AGENT_NAME=my-node
       - JENKINS_SECRET=be14865f20a2888a262a9e9e35465b6e461547eedff75d64fa850fce64bf2789
     entrypoint: >
