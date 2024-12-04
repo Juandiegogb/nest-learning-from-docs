@@ -1,0 +1,25 @@
+services:
+  jenkins:
+    container_name: jenkins
+    ports:
+      - 8080:8080
+      - 50000:50000
+    volumes:
+      - ./jenkins_data:/var/jenkins_home
+    image: jenkins/jenkins
+
+  node-worker:
+    image: jenkins/inbound-agent:latest
+    container_name: worker
+    user: root
+    environment:
+      - JENKINS_URL=http://myjenkins:8080
+      - JENKINS_AGENT_NAME=my-node
+      - JENKINS_SECRET=be14865f20a2888a262a9e9e35465b6e461547eedff75d64fa850fce64bf2789
+    entrypoint: >
+      bash -c "
+      curl -fsSL https://deb.nodesource.com/setup_18.x | bash - &&
+      apt-get install -y nodejs &&
+      apt-get clean &&
+      npm i pnpm -g &&
+      su jenkins -c '/usr/local/bin/jenkins-agent'"
