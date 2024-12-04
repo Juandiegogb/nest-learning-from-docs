@@ -5,9 +5,9 @@ services:
       - 8080:8080
       - 50000:50000
     volumes:
-      - ./jenkins_data:/var/jenkins_home
+      - jenkins_data:/var/jenkins_home
     image: jenkins/jenkins
-
+    
   node-worker:
     image: jenkins/inbound-agent:latest
     container_name: worker
@@ -25,3 +25,5 @@ services:
       apt-get clean &&
       npm i pnpm -g &&
       su jenkins -c '/usr/local/bin/jenkins-agent'"
+volumes:
+  jenkins_data:
