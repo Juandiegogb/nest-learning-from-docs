@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'node,docker,build'
+        label 'node'
     }
     stages {
         stage('Install Dependencies') {
