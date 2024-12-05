@@ -24,7 +24,6 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying the application...'
-                sh 'npm run start' // Ajusta este comando según tu estrategia de despliegue
             }
         }
     }
