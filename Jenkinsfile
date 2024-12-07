@@ -9,18 +9,19 @@ pipeline {
                 sh 'pnpm install'
             }
         }
-        stage('Build') {
-            steps {
-                echo 'Building the application...'
-                sh 'pnpm run build'
-            }
-        }
         stage('Test') {
             steps {
                 echo 'Running tests...'
                 sh 'pnpm test'
             }
         }
+        stage('Build') {
+            steps {
+                echo 'Building the application...'
+                sh 'pnpm run build'
+            }
+        }
+        
         stage('Deploy') {
             steps {
                 echo 'Deploying the application...'
