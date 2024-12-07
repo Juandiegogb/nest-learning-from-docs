@@ -13,6 +13,6 @@ export class AppController {
 
   @Post('createCat')
   createCat(@Body() createCatDto: CreateCatDto) {
-    console.log(createCatDto);
+    return this.appService.createCat(createCatDto);
   }
 }
