@@ -20,11 +20,12 @@ services:
     environment:
       - JENKINS_URL=http://jenkins:8080
       - JENKINS_AGENT_NAME=my-node
-      - JENKINS_SECRET=be14865f20a2888a262a9e9e35465b6e461547eedff75d64fa850fce64bf2789
+      - JENKINS_SECRET=6422b88133eee8316c5b44c960e89ce0e1df51de24851248aef3cbdb0e237d33
     entrypoint: >
       bash -c "
       curl -fsSL https://deb.nodesource.com/setup_18.x | bash - &&
       apt-get install -y nodejs &&
+      sudo apt install docker.io -y &&
       apt-get clean &&
       npm i pnpm -g &&
       su jenkins -c '/usr/local/bin/jenkins-agent'"
