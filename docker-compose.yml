@@ -23,6 +23,8 @@ services:
       - JENKINS_SECRET=6422b88133eee8316c5b44c960e89ce0e1df51de24851248aef3cbdb0e237d33
     entrypoint: >
       bash -c "
+      groupadd docker &&
+      usermod -aG docker jenkins &&
       curl -fsSL https://deb.nodesource.com/setup_18.x | bash - &&
       apt-get install -y nodejs &&
       apt install docker.io -y &&
