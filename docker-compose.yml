@@ -25,7 +25,7 @@ services:
       bash -c "
       curl -fsSL https://deb.nodesource.com/setup_18.x | bash - &&
       apt-get install -y nodejs &&
-      sudo apt install docker.io -y &&
+      apt install docker.io -y &&
       apt-get clean &&
       npm i pnpm -g &&
       su jenkins -c '/usr/local/bin/jenkins-agent'"
