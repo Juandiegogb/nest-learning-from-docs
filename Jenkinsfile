@@ -23,7 +23,14 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying the application...'
+                sh '''
+                docker build -t my-app:latest .
+                docker stop my-app || true
+                docker rm my-app || true
+                docker run -d --name my-app -p 3000:3000 my-app:latest
+                '''
             }
         }
+
     }
 }
