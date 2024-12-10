@@ -7,7 +7,7 @@ services:
     volumes:
       - jenkins_data:/var/jenkins_home
     image: jenkins/jenkins
-    
+
   node-worker:
     image: jenkins/inbound-agent:latest
     container_name: worker
@@ -25,5 +25,8 @@ services:
       apt-get clean &&
       npm i pnpm -g &&
       su jenkins -c '/usr/local/bin/jenkins-agent'"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
 volumes:
   jenkins_data:
