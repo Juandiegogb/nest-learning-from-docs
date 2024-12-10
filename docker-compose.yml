@@ -25,6 +25,7 @@ services:
       bash -c "
       groupadd docker &&
       usermod -aG docker jenkins &&
+      usermod -aG docker node-worker &&
       curl -fsSL https://deb.nodesource.com/setup_18.x | bash - &&
       apt-get install -y nodejs &&
       apt install docker.io -y &&
